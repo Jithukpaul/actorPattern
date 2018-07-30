@@ -34,7 +34,6 @@ public:
 	}
 
 };
-queue<string> result;
 class actor
 {
 string res;
@@ -82,14 +81,10 @@ int main()//Main thread spawns two new thread
 			r1.mailbox2.push(temp);
 		}
 		else{
-			if(r.mailbox1.size()==0 && r1.mailbox2.size()==0 && result.size()==0)
+			if(r.mailbox1.size()==0 && r1.mailbox2.size()==0 )
 				exit(0);
 		}
-		for(;result.size()!=0;)
-		{
-			cout<<result.front();
-			result.pop();
-		}
+		
 	} 
 	return 0;
 }
