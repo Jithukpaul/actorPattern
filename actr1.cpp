@@ -10,7 +10,6 @@
 using namespace std;	
 	queue<string> res;
 	int s=0;string cres,cres1;
-
 	queue<int> mailbox2;
 	string sum(int a)// for showing the behaviour (i.e:it can set designate what to do with the next message )
 	{
@@ -33,8 +32,14 @@ using namespace std;
 			}
 		}while(true);
 	}
-
+	void add1(int temp){
+		mailbox2.push(temp);
+	}
+	//-------------------
 	queue<int> mailbox1;
+	void add2(int temp){
+		mailbox1.push(temp);
+	}
 	string fact(int a)
 	{
 		int fa=1;
@@ -67,7 +72,7 @@ void completion_dispatcher(){
 		}
 	}
 }
-int main()//Main thread spawns two new thread 
+int main()//Main thread spawns three new thread 
 {
 	int choice, temp;
 	cout<<"Enter the option:- 0:fact, 1:sum, othervalue:exit\n";
@@ -79,17 +84,17 @@ int main()//Main thread spawns two new thread
 		cin>>choice;
 		if(choice==0){
 			cin>>temp;
-			mailbox1.push(temp);
+			add1(temp);
 		}
 		else if(choice==1){
 			cin>>temp;
-			mailbox2.push(temp);
+			add2(temp);
 		}
 		else{
-			if(mailbox1.size()==0 && mailbox2.size()==0 )
+			if(mailbox1.size()==0 && mailbox2.size()==0 ){
 				exit(0);
+			}
 		}		
 	} 
 	return 0;
 }
-
